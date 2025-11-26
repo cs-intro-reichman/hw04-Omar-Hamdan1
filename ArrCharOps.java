@@ -103,17 +103,21 @@ public class ArrCharOps {
         return result;
     }
 
-    public static int compareTo(String str1, String str2) {
-        int min = Math.min(str1.length(), str2.length());
+   public static int compareTo(String str1, String str2) {
+    int n = Math.min(str1.length(), str2.length());
 
-        for (int i = 0; i < min; i++) {
-            if (str1.charAt(i) < str2.charAt(i)) return -1;
-            if (str1.charAt(i) > str2.charAt(i)) return 1;
-        }
+     for (int i = 0; i < n; i++) {
+        char c1 = str1.charAt(i);
+        char c2 = str2.charAt(i);
 
-        if (str1.length() < str2.length()) return -1;
-        if (str1.length() > str2.length()) return 1;
+        if (c1 < c2) return -1;
+        if (c1 > c2) return 1;
+    }
 
-        return 0;
+    // All equal so far → shorter is smaller
+    if (str1.length() < str2.length()) return -1;
+    if (str1.length() > str2.length()) return 1;
+
+    return 0;
     }
 }
