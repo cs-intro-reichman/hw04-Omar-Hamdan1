@@ -25,8 +25,8 @@ public class MyString {
     public static boolean contains(String str1, String str2) {
 
         // If str2 is empty → always contained
-        if (str2.length() == 0)
-            return false;
+        if (str2.length() == 0 || str2.length() == -1)
+            return true;
 
         if (str2.length() > str1.length())
             return false;
