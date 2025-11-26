@@ -23,31 +23,29 @@ public class MyString {
 
     /** If str1 contains str2, returns true; otherwise returns false. */
     public static boolean contains(String str1, String str2) {
-        //Validating the string length
+        // If str2 is longer → cannot be contained
         if (str2.length() > str1.length())
             return false;
 
-        // Triming and changing the string to lower case
+        // Convert to lowercase as required
         str1 = str1.toLowerCase();
         str2 = str2.toLowerCase();
 
-        boolean flag = false;
+        // Sliding window approach
+        for (int i = 0; i <= str1.length() - str2.length(); i++) {
+            boolean match = true;
 
-        //Doing the proggres of checking 
-        for (int i = 0; i < str1.length(); i++){
-            if (str2.charAt(0) == str1.charAt(i)){
-                flag = true;
-                for (int j = i; j < str2.length() + i; j++){
-                    if (str2.charAt(j - i) != str1.charAt(j))
-                        return false;
+            for (int j = 0; j < str2.length(); j++) {
+                if (str1.charAt(i + j) != str2.charAt(j)) {
+                    match = false;
+                    break;
                 }
             }
-            
+
+            if (match) return true;
         }
 
-        if (!flag)
-            return false;
-
-        return true;
+        return false;
     }
+
 }
