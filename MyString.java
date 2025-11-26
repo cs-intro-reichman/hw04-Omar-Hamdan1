@@ -23,22 +23,26 @@ public class MyString {
 
     /** If str1 contains str2, returns true; otherwise returns false. */
     public static boolean contains(String str1, String str2) {
-        str1 = str1.toLowerCase();
-        str2 = str2.toLowerCase();
+
+        // If str2 is empty → always contained
+        if (str2.length() == 0)
+            return false;
 
         if (str2.length() > str1.length())
             return false;
 
+        str1 = str1.toLowerCase();
+        str2 = str2.toLowerCase();
+
         for (int i = 0; i <= str1.length() - str2.length(); i++) {
 
-            // If the first character matches, check the rest
             if (str1.charAt(i) == str2.charAt(0)) {
                 boolean match = true;
 
-                for (int j = 1; j < str2.length(); j++) {
+                for (int j = 0; j < str2.length(); j++) {
                     if (str1.charAt(i + j) != str2.charAt(j)) {
                         match = false;
-                        break;      // <-- THIS FIXES THE BUG
+                        break;
                     }
                 }
 
@@ -49,7 +53,6 @@ public class MyString {
 
         return false;
     }
-
 
 
 
